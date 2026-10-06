@@ -1,0 +1,136 @@
+---
+// This is the pure Astro version. No React timeouts possible.
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dam Growth - AI Outcome Engine</title>
+    <!-- This guarantees Tailwind CSS works perfectly -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  
+  <body class="min-h-screen bg-[#04060d] text-slate-100">
+    <!-- Nav -->
+    <header class="sticky top-0 z-50 border-b border-white/10 bg-[#04060d]/80 backdrop-blur">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        <div class="text-lg font-semibold tracking-wide">Dam Growth</div>
+        <a href="#diagnosis" class="rounded-full bg-white px-4 py-2 text-sm font-semibold text-black transition hover:bg-slate-200">
+          Start AI Diagnosis
+        </a>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="mx-auto max-w-7xl px-6 pb-16 pt-20">
+      <div class="max-w-3xl">
+        <p class="mb-4 inline-block rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.2em] text-slate-300">
+          AI Outcome Engine
+        </p>
+        <h1 class="text-4xl font-semibold leading-tight md:text-6xl">
+          Turn operational bottlenecks into measurable EBITDA growth.
+        </h1>
+        <p class="mt-6 text-lg leading-8 text-slate-300">
+          Dam Growth helps businesses move into AI with practical AI concierges that reduce cost, speed up operations, and improve profitability.
+        </p>
+      </div>
+    </section>
+
+    <!-- AI Diagnosis Tool -->
+    <section id="diagnosis" class="border-y border-white/10 bg-white/[0.03]">
+      <div class="mx-auto max-w-7xl px-6 py-20">
+        <div class="mx-auto max-w-3xl">
+          <h2 class="text-3xl font-semibold">What is your biggest operational bottleneck right now?</h2>
+          <p class="mt-4 text-slate-300">Tell us your problem, and our AI engine will diagnose it.</p>
+
+          <form id="diagnosis-form" class="mt-8 rounded-3xl border border-white/10 bg-[#070b14] p-6">
+            <label for="bottleneck" class="text-sm font-medium text-slate-300">Describe your bottleneck</label>
+            <textarea 
+              id="bottleneck" 
+              placeholder="Example: Our support team is overwhelmed with tickets. Or: Finance spends too much time processing invoices." 
+              class="mt-3 h-32 w-full resize-none rounded-2xl border border-white/10 bg-black/30 p-4 text-sm text-white outline-none placeholder:text-slate-500 focus:border-white/30"
+            ></textarea>
+
+            <button 
+              type="submit" 
+              class="mt-4 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition hover:bg-slate-200"
+            >
+              Run AI Diagnosis
+            </button>
+
+            <div id="output" class="mt-6 whitespace-pre-line rounded-2xl border border-white/10 bg-white/[0.05] p-5 text-sm leading-7 text-slate-200 hidden"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- The 3 Concierges -->
+    <section class="mx-auto max-w-7xl px-6 py-20">
+      <h2 class="text-3xl font-semibold">Three AI concierges that solve real business bottlenecks</h2>
+      <div class="mt-10 grid gap-6 lg:grid-cols-3">
+        
+        <div class="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
+          <h3 class="text-xl font-semibold">Customer Support Triage</h3>
+          <p class="mt-4 text-sm font-medium text-slate-400">Problem</p>
+          <p class="mt-2 text-sm leading-7 text-slate-300">Support teams drown in repeated tickets and slow responses.</p>
+          <p class="mt-5 text-sm font-medium text-slate-400">Outcome</p>
+          <p class="mt-2 text-sm leading-7 text-slate-300">Faster response time, lower cost per ticket, happier customers.</p>
+        </div>
+
+        <div class="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
+          <h3 class="text-xl font-semibold">Lead Qualification</h3>
+          <p class="mt-4 text-sm font-medium text-slate-400">Problem</p>
+          <p class="mt-2 text-sm leading-7 text-slate-300">Sales teams waste time on unqualified leads and slow follow-up.</p>
+          <p class="mt-5 text-sm font-medium text-slate-400">Outcome</p>
+          <p class="mt-2 text-sm leading-7 text-slate-300">Better pipeline, faster lead response, higher conversion.</p>
+        </div>
+
+        <div class="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
+          <h3 class="text-xl font-semibold">Invoice Processing</h3>
+          <p class="mt-4 text-sm font-medium text-slate-400">Problem</p>
+          <p class="mt-2 text-sm leading-7 text-slate-300">Finance teams lose hours manually processing invoices.</p>
+          <p class="mt-5 text-sm font-medium text-slate-400">Outcome</p>
+          <p class="mt-2 text-sm leading-7 text-slate-300">Lower processing cost, fewer errors, better cash flow.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10">
+      <div class="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-6 py-10 md:flex-row md:items-center">
+        <div>
+          <p class="text-sm font-semibold">Dam Growth</p>
+          <p class="mt-2 text-sm text-slate-400">AI Outcome Engine for profitability and EBITDA growth.</p>
+        </div>
+        <div class="text-sm text-slate-400">© 2026 Dam Growth. All rights reserved.</div>
+      </div>
+    </footer>
+
+    <!-- The Engine Logic (Vanilla JS - No timeouts!) -->
+    <script is:inline>
+      document.getElementById('diagnosis-form').addEventListener('submit', function(e) {
+        e.preventDefault(); // Stop page reload
+        
+        const input = document.getElementById('bottleneck').value;
+        const outputDiv = document.getElementById('output');
+        const text = input.toLowerCase();
+        let result = '';
+
+        if (text.includes('support') || text.includes('customer') || text.includes('ticket')) {
+          result = `Your bottleneck appears to be Customer Support Operations.\n\nRecommended AI Concierge: Customer Support Triage.\n\nWhat it can do:\n1. Classify incoming tickets automatically.\n2. Draft responses for common issues.\n3. Reduce first response time.`;
+        } else if (text.includes('lead') || text.includes('sales') || text.includes('pipeline')) {
+          result = `Your bottleneck appears to be Lead Qualification.\n\nRecommended AI Concierge: Lead Qualification Concierge.\n\nWhat it can do:\n1. Qualify leads by need and budget.\n2. Score leads automatically.\n3. Route hot leads to sales instantly.`;
+        } else if (text.includes('invoice') || text.includes('finance') || text.includes('billing')) {
+          result = `Your bottleneck appears to be Finance Operations.\n\nRecommended AI Concierge: Invoice Processing Concierge.\n\nWhat it can do:\n1. Extract data from invoices automatically.\n2. Match against purchase orders.\n3. Reduce manual finance workload.`;
+        } else {
+          result = `Thank you. Your bottleneck needs deeper diagnosis.\n\nBased on your answer, Dam Growth recommends starting with an AI Outcome Audit to map your operational friction.`;
+        }
+
+        outputDiv.innerText = result;
+        outputDiv.classList.remove('hidden'); // Show the result box
+      });
+    </script>
+  </body>
+</html>
